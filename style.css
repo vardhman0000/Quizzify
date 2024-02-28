@@ -29,7 +29,7 @@
 
 
 :root {
-    --border: rgb(255, 255, 255) dashed 3px;
+    --border: rgb(232, 30, 30) dashed 3px;
     --font: 'Poppins';
     --color1: #44a98c;
     /* --color2: rgb(24, 23, 23); */
@@ -522,9 +522,10 @@ body {
 
 .testimonial .card img {
     max-width: 200px;
-    width: 28vw;
+    /* width: 28vw; */
+    width: 12rem;
     /* height: 300px; */
-    height: 10rem;
+    height: 14.5rem;
     object-fit: cover;
     margin-left: -60px;
     margin-right: 30px;
@@ -535,6 +536,8 @@ body {
     margin: -100px 0 30px 8px;
     width: 100%;
     max-width: 1000px;
+    /* border: var(--border); */
+    border-radius: 50%;
 }
 
 .testimonial .card h2 {
@@ -568,7 +571,8 @@ body {
 
 .testimonial .card button {
     border: 0;
-    background: #5448de;
+    background: var(--color5);
+    /* background: #5448de; */
     color: #f8f8f8;
     font-family: inherit;
     padding: 16px 26px;
