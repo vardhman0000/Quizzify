@@ -662,7 +662,7 @@ footer {
 .contact-info-icon {
     height: 70px;
     width: 70px;
-    background-color: #fff;
+    background-color: var(--color2);
     text-align: center;
     border-radius: 50%;
     border: black 1px solid;
@@ -671,7 +671,7 @@ footer {
 .contact-info-icon i {
     font-size: 30px;
     line-height: 70px;
-    color: black;
+    color: #fff;
 }
 
 .contact-info-content {
@@ -690,7 +690,7 @@ footer {
 .contact-info-content p {
     color: #fff;
     color: black;
-
+    margin: 0;
     font-size: 1em;
 }
 
