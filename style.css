@@ -92,9 +92,15 @@ body {
     padding: 30px;
 }
 
+#navbar .nav-items {
+    display: flex;
+    justify-content: center;
+}
+
 #navbar ul {
     display: flex;
-
+    justify-content: center;
+    padding: 0;
 }
 
 #navbar ul li {
@@ -131,8 +137,8 @@ body {
 #navbar .buttons {
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: auto;
+    justify-content: flex-end;
+    width: 15vw;
     gap: 5px;
 }
 
@@ -435,6 +441,8 @@ body {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     box-shadow: 1rem 1rem 0 -0.25rem #d0f6e2, 1rem 1rem 0 0 black;
     transition: box-shadow 0.5s;
+    transform: translateY(90px);
+
 }
 
 .retro-card:hover {
@@ -471,15 +479,17 @@ body {
 .testimonial h1 {
     color: white;
     text-align: center;
-    margin: 40px 0;
+    margin: 50px 0 90px 0;
 }
 
 .testimonial .swiper {
-    margin-top: 110px;
+    margin-top: 70px;
     width: 950px;
     display: flex;
     align-items: center;
     background-color: var(--color2);
+    perspective: 1000px;
+    transform: translate3d(0, 0, -800px);
     /* border: red 5px dashed; */
 }
 

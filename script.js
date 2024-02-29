@@ -176,19 +176,88 @@ document.addEventListener("DOMContentLoaded", function () {
 
   gsap.registerPlugin(ScrollToPlugin);
 
-  document.querySelectorAll('.text').forEach((btn, index) => {
+  document.querySelectorAll(".text").forEach((btn, index) => {
     btn.addEventListener("click", () => {
       gsap.to(window, {
-        duration : 1.5,
-        scrollTo : {
-          y : "#section" + (index + 1),
-          offsetY : 70
-        }});
+        duration: 1.5,
+        scrollTo: {
+          y: "#section" + (index + 1),
+          offsetY: 70,
+        },
+      });
     });
   });
 
+  const retroCard = document.querySelectorAll(".retro-card");
+  gsap.set(retroCard, {
+    opacity: 0,
+    scale: 0,
+  });
+  retroCard.forEach((card, index) => {
+    gsap.to(card, {
+      y: -40,
+      duration: 1,
+      opacity: 1,
+      scale: 1,
+      delay: index * 0.1,
+      scrollTrigger: {
+        trigger: card,
+      },
+    });
+  });
+
+  //  const testimonial = document.querySelector(".testimonial");
+  //  const swiperTrigger = document.querySelector('.swiper') ;
+  //  const forTrigger = document.querySelector('.forAnimTrigger') ;
+  //  gsap.set(testimonial, {
+  //    opacity: 0,
+  //  });
+  //  gsap.to(testimonial, {
+  //     y : -90,
+  //     duration : 2,
+  //     opacity : 1,
+  //     scrollTrigger : {
+  //       trigger : forTrigger
+  //     }
+  //  });
 
 
 
+  const testimonial = document.querySelector(".swiper");
+  const forTrigger = document.querySelector(".forAnimTrigger");
+
+  gsap.set(testimonial, {
+    opacity: 0,
+    y: -90,
+  });
+
+  gsap.to(testimonial, {
+    duration: 1.7,
+    opacity: 1,
+    y: 0,
+    delay : 0.01,
+    keyframes: [
+      {
+        y: -90,
+        opacity: 0, // Start position behind the screen
+        ease: "none",
+      },
+      {
+        y: 0,
+        opacity: 1,
+        ease: "none",
+        time: 0.5, // 50% of the animation duration
+      },
+      {
+        y: -20, // Move testimonial back slightly
+        opacity: 1,
+        ease: "none",
+      },
+    ],
+    scrollTrigger: {
+      trigger: forTrigger,
+    },
+  });
+  
 
 });
