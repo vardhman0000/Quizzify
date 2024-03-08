@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
     quizHeading.textContent = selectedCategory;
     quizHeading.style.color='black';
     categoryId = category[selectedCategory];
+    console.log(categoryId) ;
 
 
     loadQues() ;
