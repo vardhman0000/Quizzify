@@ -1,5 +1,5 @@
 let category = {
-    Computer : 18,
+    Computers : 18,
     Mathematics : 19,
     Gadgets : 30,
     Nature : 23,
