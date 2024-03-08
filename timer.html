@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer</title>
+    <style>
+        #countdown {
+            text-align: center;
+            font-family: sans-serif;
+        }
+
+        #timer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #timer span {
+            font-size: 36px;
+            margin: 0 10px;
+        }
+
+        #startButton {
+            padding: 10px 20px;
+            background-color: #008CBA;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #startButton:hover {
+            background-color: #007BFF;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="countdown">
+        <span id="minutes">00</span>
+        <span>:</span>
+        <span id="seconds">00</span>
+        <button id="startButton">Start</button>
+    </div>
+
+    <script>
+        let minutes = document.getElementById('minutes');
+        let seconds = document.getElementById('seconds');
+        let startButton = document.getElementById('startButton');
+
+        let totalSeconds = 0;
+        let isRunning = false;
+
+        startButton.addEventListener('click', function () {
+            if (isRunning) {
+                clearInterval(interval);
+                isRunning = false;
+                startButton.textContent = 'Start';
+            } else {
+                isRunning = true;
+                startButton.textContent = 'Stop';
+                interval = setInterval(updateTime, 1000);
+            }
+        });
+
+        function updateTime() {
+            if (totalSeconds > 0) {
+                --totalSeconds;
+                minutes.textContent = Math.floor(totalSeconds / 60).toString().padStart(2, '0');
+                seconds.textContent = (totalSeconds % 60).toString().padStart(2, '0');
+            } else {
+                clearInterval(interval);
+                isRunning = false;
+                startButton.textContent = 'Start';
+            }
+        }
+
+    </script>
+</body>
+
+</html>

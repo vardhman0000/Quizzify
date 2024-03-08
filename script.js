@@ -1,3 +1,14 @@
+const categoryCards = document.querySelectorAll(".retro-card");
+
+categoryCards.forEach(card => {
+    card.addEventListener('click', function() {
+        const category = card.dataset.category;
+        localStorage.setItem('quizCategory', category);
+        window.location.href = 'computer.html'; // Redirect to quiz page
+    });
+});
+
+
 var swiper = new Swiper(".mySwiper", {
   spaceBetween: 50,
   slidesPerView: 3,
@@ -16,6 +27,24 @@ var swiper = new Swiper(".mySwiper", {
   },
   loop: true,
 });
+
+//***** To adjust Slides per view to 2 ***** */
+
+// Add a listener for window resize
+window.addEventListener("resize", function() {
+  // Check if the window width is less than or equal to 700px
+  if (window.innerWidth <= 720) {
+    // Update swiper instance with slidesPerView set to 2
+    swiper.params.slidesPerView = 2;
+    swiper.update(); // Update swiper
+  } else {
+    // Update swiper instance with slidesPerView set back to 3
+    swiper.params.slidesPerView = 3;
+    swiper.update(); // Update swiper
+  }
+});
+
+
 
 const navbar = document.querySelector("#navbar");
 window.addEventListener("scroll", () => {
@@ -259,5 +288,4 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   });
   
-
 });
