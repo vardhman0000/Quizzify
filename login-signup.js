@@ -1,3 +1,18 @@
+window.addEventListener('DOMContentLoaded', () => {
+  // Load the loader HTML
+  fetch('glassloader.html')
+      .then(response => response.text())
+      .then(html => {
+          document.body.insertAdjacentHTML('afterbegin', html);
+          // After 2 seconds, hide the loader and show the quiz content
+          setTimeout(() => {
+              document.querySelector('.loader-body').style.display = 'none';
+              document.querySelector('.container').style.display = 'block';
+              triggerAnimaitons() ;
+          }, 2000);
+      });
+});
+
 const sign_in_btn = document.querySelector("#sign-in-btn");
 const sign_up_btn = document.querySelector("#sign-up-btn");
 const container = document.querySelector(".container");

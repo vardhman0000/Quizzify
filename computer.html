@@ -10,8 +10,8 @@
 <body>
     <div class="wrapper">
         <div class="upper">
-            <h1>
-                <span id="quizHead">Computer</span> <span>Quiz</span>
+            <h1 class="quizContainer">
+                <span id="quizHead">Computer</span> <span id="quizHead2">Quiz</span>
             </h1>
         </div>
         <div class="middle">
@@ -21,12 +21,12 @@
         </div>
         <div class="lower">
             <img src="ques6-e.png" alt="" class="ques1">
+            <img src="ques2-e3.png" alt="" class="ques">
             <div class="container">
                 <div class="question">
                     <h2 class="quesContainer">
                         <!-- Question Goes Here!! -->
                     </h2>
-                    <img src="ques2-e3.png" alt="" class="ques">
                 </div>
 
                 <div class="option-wrapper">
@@ -45,15 +45,43 @@
                         </div>
                     </div>
                     <div class="buttons">
-                        <div class="nextBtn">
+                        <div class="nextBtn btn">
                             <button>Next</button>
                         </div>
-                        <div class="skipBtn">
+                        <div class="skipBtn btn">
                             <button>Skip</button>
                         </div>
-                        <div class="shareBtn">
+                        <div class="shareBtn btn">
                             <button>Share</button>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div class="progress-wrapper">
+                <div class="progress-page">
+                    <div class="progress-head">
+                        <h1>Your got <span class="correct-ans">0</span> / <span class="total-questions">10</span> Correct !!</h1>
+                    </div>
+                    <div class="progress-part">
+                        <div class="progress-circle">80</div>
+                        <div class="legend">
+                            <div class="correct">
+                                <div class="legend-box"></div>
+                                <p>Correct</p>
+                            </div>
+                            <div class="skipped">
+                                <div class="legend-box"></div>
+                                <p>Skipped</p>
+                            </div>
+                            <div class="incorrect">
+                                <div class="legend-box"></div>
+                                <p>Incorrect</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="progress-lower">
+                        <button class="play-again">Play Again</button>
+                        <button class="play-again">Share Score</button>
                     </div>
                 </div>
             </div>

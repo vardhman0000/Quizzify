@@ -54,12 +54,98 @@ body {
     overflow-x: hidden;
 }
 
+
+
+/* --------------------- LOADER --------------------- */
+
+.loader-body {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    /* background: linear-gradient(to right, #917173, #2a3b36, #432c52); */
+    background-image: linear-gradient( 109.6deg,  rgba(5,84,94,1) 16%, #bbb 91.1% );
+    background-image: linear-gradient( 114.3deg,  rgba(19,126,57,1) 0.2%, rgba(8,65,91,1) 68.5% );
+    background-image: linear-gradient( 91deg,  rgba(72,154,78,1) 5.2%, rgba(251,206,70,1) 95.9% );
+    background-image: linear-gradient( 73.1deg,  #227e22 8%, rgba(99,162,17,1) 86.9% );
+    background-image: linear-gradient( 109.6deg,  rgba(33,103,43,1) 11.3%, rgba(117,162,61,1) 91.1% );
+    background-image: radial-gradient( circle 935px at 3.1% 5.8%,  rgba(182,255,139,1) 0%, rgba(8,88,127,1) 100.2% );
+    background-image: linear-gradient( 110.3deg,  rgba(73,93,109,1) 4.3%, rgba(49,55,82,1) 96.7% ); 
+    background-image: radial-gradient( circle farthest-corner at -1% 57.5%,  rgba(19,170,82,1) 0%, rgba(0,102,43,1) 90% );
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader::before {
+    content: "";
+    background: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(8px);
+    position: absolute;
+    width: 140px;
+    height: 55px;
+    z-index: 20;
+    border-radius: 0 0 10px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.274);
+    border-top: none;
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.082);
+    animation: anim2 2s infinite;
+}
+
+.loader div {
+    background: rgb(228, 228, 228);
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    z-index: 1;
+    animation: anim 2s infinite linear;
+    animation-delay: calc(-0.3s * var(--i));
+    transform: translateY(5px);
+    margin: 0.2em;
+}
+
+@keyframes anim {
+
+    0%,
+    100% {
+        transform: translateY(5px);
+    }
+
+    50% {
+        transform: translateY(-65px);
+    }
+}
+
+@keyframes anim2 {
+
+    0%,
+    100% {
+        transform: rotate(-10deg);
+    }
+
+    50% {
+        transform: rotate(10deg);
+    }
+}
+
+/* __________________________________________________ */
+
 .wrapper {
     height: 100%;
     width: 100vw;
     background-color: var(--color2);
     display: flex;
     flex-direction: column;
+    display: none;
     /* border: var(--border); */
 }
 
@@ -737,6 +823,7 @@ footer {
     outline: none;
     resize: none;
     background-color: black;
+    color: white;
 }
 
 .input-container span {
@@ -747,9 +834,7 @@ footer {
     margin: 10px 0;
     transition: 0.5s;
     color: white;
-    /* color: black; */
 }
-
 .input-container input:focus~span,
 .input-container textarea:focus~span {
     color: #e91e63;

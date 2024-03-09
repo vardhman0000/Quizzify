@@ -1,5 +1,87 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
+/* UTILITY CLASSES */
+
+.--opacity {
+    opacity: 1;
+}
+
+.slide-in-from-up {
+    animation-name: slideInFromUp;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes slideInFromUp {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    80% {
+        transform: translateY(10%);
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+.slide-in-from-up-quesImg {
+    animation: slideInFromUp-quesImg 0.5s ease-in-out forwards;
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+}
+
+@keyframes slideInFromUp-quesImg {
+    0% {
+        transform: translateY(50%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.slide-in-from-right {
+    width: 0;
+    animation-name: slideInFromRight;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-out;
+}
+
+@keyframes slideInFromRight {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    100% {
+        width: 65vw;
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+.slide-in-from-left {
+    width: 0;
+    animation-name: slideInFromLeft;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes slideInFromLeft {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    100% {
+        width: 65vw;
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* ______________________________________________ */
+
+
 :root {
     --border : 2px red dashed;
     --font-family : 'Montserrat';
@@ -42,11 +124,13 @@ body {
     justify-content: end;
 }
 .lower .ques {
+    z-index: 1;
     position: absolute;
     top: 10vh;
     right: 3.5vw;
     height: 33vh;
     width: 21.5vh;
+    opacity: 0;
     filter: drop-shadow(10px 10px black);
 }
 .lower .contanier .question img {
@@ -55,10 +139,21 @@ body {
 }
 .lower .ques1 {
     position: absolute;
-    bottom: -60px;
     bottom: -5vh;
     left: 2vw;
     width: 30vw;
+    opacity: 0;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+}
+@keyframes moveRight {
+    from {
+        transform: translateX(-200px);
+    }
+    to {
+        transform: translateX(0px);
+    }
 }
 
 .lower .container {
@@ -66,6 +161,7 @@ body {
     background-color: var(--color1);
     height: 55vh;
     width: 65vw;
+    position: relative;
     border-radius: 2rem 0 0 2rem;
     box-shadow:  20px 20px 60px #c7c7c7,
              -20px -20px 60px #ffffff;
@@ -184,6 +280,7 @@ body {
 .option-wrapper {
     display: flex;
     flex-direction: row;
+    justify-content: space-evenly;
 }
 .option-wrapper .buttons {
     /* border: var(--border); */
@@ -194,11 +291,153 @@ body {
     gap: 1vw;
 }
 .buttons button {
-    border: none;
-    border-radius: 20px;
-    padding: 1.5vh 0vw;
+    background-color: white;
+    color: black;
+    border-radius: 10em;
     width: 10vw;
     font-size: 1.1vw;
+    font-weight: 600;
+    padding: 1em 2em;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border: 1px solid black;
+    box-shadow: 0 0 0 0 black;
+}
+.buttons button:hover {
+    transform: translateY(-4px) translateX(-2px);
+    box-shadow: 2px 5px 0 0 black;
+};
+.btn--translate--animation {
+    animation: translate-btn 0.3s ease-in-out;
+}
+@keyframes translate-btn {
+    50% {
+        /* transform: translateY(0px) translateX(0px); */
+        transform: translate(0,0);
+        box-shadow: none;
+    }
+}
+
+.progress-wrapper {
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.459);
+    backdrop-filter: blur(20px);
+    display: none;
+}
+.progress-page {
+    height: 65vh;
+    width: 50vw;
+    background-color: #7be2ab;
+    background-color: #44a973;
+    position: absolute;
+    left: 26%;
+    top: 15%;
+    border-radius: 4rem;
+    padding: 4vw 2vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    gap: 7vh;
+    animation: fadeIn 0.7s ease-in-out forwards;
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        scale: 0.5;
+    }
+    to {
+        opacity: 1;
+        scale: 1;
+    }
+}
+
+.progress-head {
+    color: white; 
+}
+.progress-part {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.progress-circle {
+    background-color: transparent;
+    color: white;
+    border: 2rem white solid;
+    border-radius: 50%;
+    height: 30vh;
+    width: 30vh;
+    font-size: 2rem;
     font-weight: bold;
-    border: black 3px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 2px 2px 20px 0px rgba(21, 21, 21, 0.744),
+                inset 2px 2px 20px 0px rgb(41, 41, 41);
+}
+.legend {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 1rem;
+    color: white;
+    font-size: 1.5vw;
+    font-weight: 600;
+}
+.legend :is(.correct, .incorrect, .skipped) {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0.7rem;
+}
+.legend .correct .legend-box {
+    height: 20px;
+    width: 20px;
+    background-color: #0e7429;
+}
+.legend .skipped .legend-box {
+    height: 20px;
+    width: 20px;
+    background-color: #f1791e;
+}
+.legend .incorrect .legend-box {
+    height: 20px;
+    width: 20px;
+    background-color: #fff;
+}
+.progress-lower {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3vw;
+}
+.play-again {
+    padding: 1rem;
+    border: none;
+    outline: none;
+    background-color: #6c5ce7;
+    background-color: white;
+    padding: 10px 20px;
+    font-size: 12px;
+    font-weight: 700;
+    color: black;
+    border-radius: 50px;
+    height: 6vh;
+    font-size: 1.2vw;
+    transition: all ease 0.1s;
+    box-shadow: 0px 5px 0px 0px #a29bfe;
+    box-shadow: 0px 5px 0px 0px black;
+}
+.play-again:active {
+    transform: translateY(5px);
+  box-shadow: 0px 0px 0px 0px #a29bfe;
 }

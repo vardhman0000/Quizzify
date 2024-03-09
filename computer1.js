@@ -1,3 +1,18 @@
+window.addEventListener('DOMContentLoaded', () => {
+    // Load the loader HTML
+    fetch('glassloader.html')
+        .then(response => response.text())
+        .then(html => {
+            document.body.insertAdjacentHTML('afterbegin', html);
+            // After 2 seconds, hide the loader and show the quiz content
+            setTimeout(() => {
+                document.querySelector('.loader-body').style.display = 'none';
+                document.querySelector('.wrapper').style.display = 'block';
+                triggerAnimaitons() ;
+            }, 2000);
+        });
+});
+
 let category = {
     Computers : 18,
     Mathematics : 19,
@@ -15,6 +30,11 @@ let options = document.querySelector('.options') ;
 let nextBtn = document.querySelector('.nextBtn') ;
 let skipBtn = document.querySelector('.skipBtn') ;
 let shareBtn = document.querySelector('.shareBtn') ;
+let resultContainer = document.querySelector('.progress-wrapper') ;
+let playAgain = document.querySelector('.play-again') ;
+let correctAns = document.querySelector('.correct-ans') ;
+let totalQues = document.querySelector('.total-questions') ;
+let percentage = document.querySelector('.progress-circle') ;
 
 let correctAnswer = "", correctScore = askedCount = 0, totalQuestion = 10;
 let quesIndex = 0 ;
@@ -33,16 +53,50 @@ document.addEventListener("DOMContentLoaded", () => {
     categoryId = category[selectedCategory];
     console.log(categoryId) ;
 
-
     loadQues() ;
     eventListeners() ;
+
+    document.querySelectorAll('.btn').forEach(btn => {
+        btn.addEventListener('click', () => { 
+            console.log("Button Clicked!!") ;
+            btn.classList.add('btn--translate--animation');
+            // Remove the translate--animation class when the animation ends
+            btn.addEventListener('animationend', () => {
+                btn.classList.remove('btn--translate--animation');
+            });
+        });
+    });
+
+    
+    playAgain.addEventListener('click', () => {
+        
+        document.querySelector('.wrapper').style.display = 'none';
+        document.querySelector('.loader-body').style.display = 'flex';
+        setTimeout(() => {
+            document.querySelector('.loader-body').style.display = 'none';
+            document.querySelector('.wrapper').style.display = 'block';
+            triggerAnimaitons() ;
+        }, 1500);
+
+        // Reset variables
+        quesIndex = 0;
+        correctScore = 0;
+        askedCount = 0;
+
+        // Hide result container
+        resultContainer.style.display = 'none';
+
+        // Load questions again
+        loadQues();
+
+        // Enable next button
+        nextBtn.disabled = false;
+    });
+
  })
 
 async function loadQues(){
-    // const url = 'https://opentdb.com/api.php?amount=1'; 
-    // const url = 'https://opentdb.com/api.php?amount=5&category=18&type=multiple';
     const url = `https://opentdb.com/api.php?amount=5&category=${categoryId}&type=multiple`;
-    // const url = 'https://opentdb.com/api.php?amount=10&type=boolean';
     const result = await fetch(`${url}`) ;
     const data = await result.json() ;
     questions = data.results ;
@@ -87,10 +141,19 @@ function loadNextQuestion(){
     }
     else {
         nextBtn.disabled = true ;
-        console.log("End of Questions!!") ;
+        correctAns.textContent = correctScore ;
+        totalQues.textContent = questions.length ;
+        percentage.textContent = `${getPercentage()}%` ;
+
+        // console.log("End of Questions!!") ;
+        setTimeout(() => { 
+            resultContainer.style.display = 'block' ;
+         }, 500);
     }
 }
-
+function getPercentage(){
+    return ((correctScore/questions.length)*100) ;
+}
 function selectOption(){
     // yha main deciding factor for an option being marked as selected is presence of "display--block" class, jo aage checkAnswer function me use hoga
 
@@ -126,6 +189,7 @@ function checkAnswer(){
     if(options.querySelector('.display--block')){
         let selectedAnswer = options.querySelector('.display--block').parentElement.querySelector('.head').textContent;
         if(selectedAnswer.trim() == HTMLDecode(correctAnswer)){
+            correctScore++ ;
             console.log("Correct!!") ;
         }
         else {
@@ -137,4 +201,23 @@ function checkAnswer(){
 function HTMLDecode(textString){
     let doc = new DOMParser().parseFromString(textString, "text/html");
     return doc.documentElement.textContent;
+}
+
+
+function triggerAnimaitons() {
+    let container = document.querySelector('.container');
+    let quesImg = document.querySelector('.ques');
+    let quizContanier = document.querySelector('.quizContainer');
+    let quiz1 = document.querySelector('.ques1');
+    
+    
+    container.classList.add("slide-in-from-right");
+    quizContanier.classList.add("slide-in-from-up");
+    quiz1.classList.add("slide-in-from-up");
+    nextBtn.classList.add("slide-in-from-up");
+    skipBtn.classList.add("slide-in-from-up");
+    shareBtn.classList.add("slide-in-from-up");
+    setTimeout(() => {
+        quesImg.classList.add("slide-in-from-up-quesImg");
+    }, 700);
 }

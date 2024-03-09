@@ -1,4 +1,17 @@
+const loader = document.querySelector('.loader-body');
+const wrapper = document.querySelector('.wrapper');
+
+document.addEventListener('DOMContentLoaded', () => { 
+  setTimeout(() => { 
+    loader.style.display = 'none';
+    wrapper.style.display = 'block';
+    triggerAnimations();
+  }, 1500);
+});
+
+
 const categoryCards = document.querySelectorAll(".retro-card");
+
 
 categoryCards.forEach(card => {
     card.addEventListener('click', function() {
@@ -69,7 +82,9 @@ window.addEventListener("scroll", () => {
 
 // gsap.registerPlugin(ScrollTrigger);
 
-document.addEventListener("DOMContentLoaded", function () {
+// document.addEventListener("DOMContentLoaded", function () 
+function triggerAnimations()
+{
   const secImg1 = document.querySelector(".sec1-img");
   const secImg2 = document.querySelector(".sec2-img");
   const secImg3 = document.querySelector(".sec3-img");
@@ -288,4 +303,5 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   });
   
-});
+};
+// );
