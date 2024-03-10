@@ -332,8 +332,8 @@ body {
 .progress-page {
     height: 65vh;
     width: 50vw;
-    background-color: #7be2ab;
-    background-color: #44a973;
+    /* background-color: #7be2ab;
+    background-color: #44a973; */
     position: absolute;
     left: 26%;
     top: 15%;
@@ -345,6 +345,7 @@ body {
     justify-content: space-around;
     gap: 7vh;
     animation: fadeIn 0.7s ease-in-out forwards;
+    background-image: linear-gradient( 135deg, #79F1A4 10%, #0E5CAD 100%);
 }
 @keyframes fadeIn {
     from {
