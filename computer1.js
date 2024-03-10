@@ -36,11 +36,16 @@ let correctAns = document.querySelector('.correct-ans') ;
 let totalQues = document.querySelector('.total-questions') ;
 let percentage = document.querySelector('.progress-circle') ;
 
+// let correctLegend = document.querySelector('.correct');
+// console.log(`Text : ${correctLegend.textContent}`);
+// let skippedLegend = document.querySelector('.skipped');
+// let incorrectLegend = document.querySelector('.incorrect');
+
 let correctAnswer = "", correctScore = askedCount = 0, totalQuestion = 10;
 let skippedCount = 0 ;
 let quesIndex = 0 ;
 let quesArr = [] ;
-
+let incorrectScore = 0;
 
 function eventListeners(){
     nextBtn.addEventListener('click', checkAnswer) ;
@@ -82,6 +87,8 @@ document.addEventListener("DOMContentLoaded", () => {
         // Reset variables
         quesIndex = 0;
         correctScore = 0;
+        incorrectScore = 0;
+        skippedCount = 0;
         askedCount = 0;
 
         // Hide result container
@@ -145,33 +152,46 @@ function loadNextQuestion(){
     quesIndex++ ;
     if (quesIndex < questions.length) {
       showQuestion();
-    } else {
-      nextBtn.disabled = true;
-      correctAns.textContent = correctScore;
-      totalQues.textContent = questions.length;
-      // percentage.textContent = `${getPercentage()}%` ;
+    } 
+    else {
+        nextBtn.disabled = true;
+        correctAns.textContent = correctScore;
+        totalQues.textContent = questions.length;
 
-      // console.log("End of Questions!!") ;
-      setTimeout(() => {
-        resultContainer.style.display = "block";
-      }, 500);
-
-      let circularProgress = document.querySelector(".circular-progress"),
-        progressValue = document.querySelector(".progress-value");
-      let progressStartValue = 0,
-        progressEndValue = getPercentage(),
-        speed = 50;
-
-      let progress = setInterval(() => {
-        progressStartValue++;
-        progressValue.textContent = `${progressStartValue}%`;
-        circularProgress.style.background = `conic-gradient(#5ed696 ${
-          progressStartValue * 3.6
-        }deg, #ededed 0deg)`;
-        if (progressStartValue == progressEndValue) {
-          clearInterval(progress);
+        if (`${getPercentage()}` == 0) {
+            resultContainer.style.display = "block";
+            document.querySelector('.correct-count').textContent = correctScore;
+            document.querySelector('.incorrect-count').textContent = incorrectScore;
+            document.querySelector('.skipped-count').textContent = skippedCount;
+            return;
         }
-      }, speed);
+
+        setTimeout(() => {
+            resultContainer.style.display = "block";
+        }, 500);
+
+        document.querySelector('.correct-count').textContent = correctScore;
+        document.querySelector('.incorrect-count').textContent = incorrectScore;
+        document.querySelector('.skipped-count').textContent = skippedCount;
+
+        let circularProgress = document.querySelector(".circular-progress"),
+            progressValue = document.querySelector(".progress-value");
+        let progressStartValue = 0,
+            progressEndValue = getPercentage(),
+            speed = 50;
+            console.log(`Percentage : ${getPercentage()}`) ;
+            console.log(`Correct Answers : ${correctScore}`) ;
+
+        let progress = setInterval(() => {
+            progressStartValue++;
+            progressValue.textContent = `${progressStartValue}%`;
+            circularProgress.style.background = `conic-gradient(#5ed696 ${
+            progressStartValue * 3.6
+            }deg, #ededed 0deg)`;
+            if (progressStartValue == progressEndValue) {
+            clearInterval(progress);
+            }
+        }, speed);
     }
 }
 function getPercentage(){
@@ -216,6 +236,7 @@ function checkAnswer(){
             console.log("Correct!!") ;
         }
         else {
+            incorrectScore++ ;
             console.log("Incorrect!!") ;
         }
     }
