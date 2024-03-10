@@ -367,6 +367,12 @@ body {
     align-items: center;
     justify-content: space-evenly;
 }
+/* .progress-circle-wrapper {
+    border: var(--border);
+    position: relative;
+    width: 30vh;
+    height: 30vh;
+}
 .progress-circle {
     background-color: transparent;
     color: white;
@@ -382,6 +388,53 @@ body {
     box-shadow: 2px 2px 20px 0px rgba(21, 21, 21, 0.744),
                 inset 2px 2px 20px 0px rgb(41, 41, 41);
 }
+.progress-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 30vh;
+    width: 30vh;
+    clip: rect(0, 15vh, 30vh, 0); 
+    border-radius: 50%;
+    background-color: #0e7429; 
+    transform: rotate(calc(0 * 360deg));
+    transform-origin: center;
+} */
+
+.progress-circle-wrapper{
+    /* border: var(--border); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30vh;
+    height: 30vh;
+}
+.circular-progress{
+    position: relative;
+    height: 250px;
+    width: 250px;
+    border-radius: 50%;
+    background: conic-gradient(#5ed696 3.6deg, #ededed 0deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.circular-progress::before{
+    content: "";
+    position: absolute;
+    height: 210px;
+    width: 210px;
+    border-radius: 50%;
+    background-color: #fff;
+}
+.progress-value{
+    position: relative;
+    font-size: 40px;
+    font-weight: 600;
+    color: #5ed696;
+}
+
+
 .legend {
     display: flex;
     flex-direction: column;

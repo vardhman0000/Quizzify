@@ -37,6 +37,7 @@ let totalQues = document.querySelector('.total-questions') ;
 let percentage = document.querySelector('.progress-circle') ;
 
 let correctAnswer = "", correctScore = askedCount = 0, totalQuestion = 10;
+let skippedCount = 0 ;
 let quesIndex = 0 ;
 let quesArr = [] ;
 
@@ -93,6 +94,12 @@ document.addEventListener("DOMContentLoaded", () => {
         nextBtn.disabled = false;
     });
 
+    skipBtn.addEventListener('click', () => { 
+        skippedCount++ ;
+        console.log(`Question Skipped & Count : ${skippedCount}`);
+        loadNextQuestion() ;
+    });
+
  })
 
 async function loadQues(){
@@ -136,19 +143,35 @@ function showQuestion(data){
 
 function loadNextQuestion(){
     quesIndex++ ;
-    if(quesIndex < questions.length){
-        showQuestion() ;
-    }
-    else {
-        nextBtn.disabled = true ;
-        correctAns.textContent = correctScore ;
-        totalQues.textContent = questions.length ;
-        percentage.textContent = `${getPercentage()}%` ;
+    if (quesIndex < questions.length) {
+      showQuestion();
+    } else {
+      nextBtn.disabled = true;
+      correctAns.textContent = correctScore;
+      totalQues.textContent = questions.length;
+      // percentage.textContent = `${getPercentage()}%` ;
 
-        // console.log("End of Questions!!") ;
-        setTimeout(() => { 
-            resultContainer.style.display = 'block' ;
-         }, 500);
+      // console.log("End of Questions!!") ;
+      setTimeout(() => {
+        resultContainer.style.display = "block";
+      }, 500);
+
+      let circularProgress = document.querySelector(".circular-progress"),
+        progressValue = document.querySelector(".progress-value");
+      let progressStartValue = 0,
+        progressEndValue = getPercentage(),
+        speed = 50;
+
+      let progress = setInterval(() => {
+        progressStartValue++;
+        progressValue.textContent = `${progressStartValue}%`;
+        circularProgress.style.background = `conic-gradient(#5ed696 ${
+          progressStartValue * 3.6
+        }deg, #ededed 0deg)`;
+        if (progressStartValue == progressEndValue) {
+          clearInterval(progress);
+        }
+      }, speed);
     }
 }
 function getPercentage(){
