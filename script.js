@@ -22,9 +22,26 @@ categoryCards.forEach(card => {
 });
 
 
+// var swiper = new Swiper(".mySwiper", {
+//   spaceBetween: 50,
+//   slidesPerView: 3,
+//   centeredSlides: true,
+//   autoplay: {
+//     delay: 2500,
+//     disableOnInteraction: false,
+//   },
+//   pagination: {
+//     el: ".swiper-pagination",
+//     clickable: true,
+//   },
+//   navigation: {
+//     nextEl: ".swiper-button-next",
+//     prevEl: ".swiper-button-prev",
+//   },
+//   loop: true,
+// });
 var swiper = new Swiper(".mySwiper", {
-  spaceBetween: 50,
-  slidesPerView: 3,
+  spaceBetween: 50,  
   centeredSlides: true,
   autoplay: {
     delay: 2500,
@@ -39,7 +56,21 @@ var swiper = new Swiper(".mySwiper", {
     prevEl: ".swiper-button-prev",
   },
   loop: true,
+
+  // Responsive Breakpoints
+  breakpoints: {
+    0: {
+      slidesPerView: 1 
+    },
+    768: {
+      slidesPerView: 2 
+    },
+    992: {
+      slidesPerView: 3
+    }
+  }
 });
+
 
 //***** To adjust Slides per view to 2 ***** */
 

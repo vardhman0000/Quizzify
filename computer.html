@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Computer</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="computer.css">
 </head>
@@ -13,6 +14,14 @@
             <h1 class="quizContainer">
                 <span id="quizHead">Computer</span> <span id="quizHead2">Quiz</span>
             </h1>
+            <div class="cross-x">
+                <p>Exit</p>
+                <button class="cross-button">
+                    <span class="X"></span>
+                    <span class="Y"></span>
+                    <!-- <div class="close">Exit Quiz</div> -->
+                </button>
+            </div>
         </div>
         <div class="middle">
             <div class="timer">
@@ -103,8 +112,27 @@
                 </div>
             </div>
         </div>
+        <div class="exit-confirm-container">
+            <div class="exit-confirm">
+                <!-- <div class="cross-icon">
+                    <div class="cross-x">
+                        <button class="cross-button">
+                            <span class="X"></span>
+                            <span class="Y"></span>
+                            <div class="close">Exit Quiz</div>
+                        </button>
+                    </div>
+                </div> -->
+                <div class="confirm-text">
+                    Are you sure you want to exit ?
+                </div>
+                <div class="confirm-buttons">
+                    <button class="exit-yes">Yes</button>
+                    <button class="exit-no">No</button>
+                </div>
+            </div>
+        </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="computer1.js"></script>
 </body>
 </html>
