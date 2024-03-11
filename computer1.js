@@ -90,6 +90,10 @@ document.addEventListener("DOMContentLoaded", () => {
         incorrectScore = 0;
         skippedCount = 0;
         askedCount = 0;
+        let circularProgress = document.querySelector(".circular-progress"),
+        progressValue = document.querySelector(".progress-value");
+        progressValue.textContent = '0%';
+        circularProgress.style.background = `conic-gradient(#5ed696 0deg, #ededed 0deg)`;
 
         // Hide result container
         resultContainer.style.display = 'none';
@@ -106,6 +110,21 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log(`Question Skipped & Count : ${skippedCount}`);
         loadNextQuestion() ;
     });
+
+    document.querySelector('.share-score').addEventListener('click', () => {
+        html2canvas(document.querySelector('#resultCard')).then(canvas => {
+            // Convert the canvas to a data URL 
+            const imageData = canvas.toDataURL('image/png');
+    
+            // Create a temporary link for WhatsApp sharing
+            const link = document.createElement('a');
+            link.href = 'whatsapp://send?text=Check%20out%20my%20Quiz%20Score!%20' + encodeURIComponent(imageData);
+            link.setAttribute("data-action", "share/whatsapp/share"); // May be required for some browsers
+            link.target = '_blank';
+            link.click();
+        });
+    });
+    
 
  })
 
@@ -227,6 +246,8 @@ function selectOption(){
     });
     checkAnswer();
 }
+
+
 function checkAnswer(){
     nextBtn.disabled = true ;
     if(options.querySelector('.display--block')){

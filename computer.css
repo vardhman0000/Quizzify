@@ -474,7 +474,7 @@ body {
     align-items: center;
     gap: 3vw;
 }
-.play-again {
+.play-again, .share-score {
     padding: 1rem;
     border: none;
     outline: none;
@@ -491,7 +491,8 @@ body {
     box-shadow: 0px 5px 0px 0px #a29bfe;
     box-shadow: 0px 5px 0px 0px black;
 }
-.play-again:active {
+.play-again:active,
+.share-score:active {
     transform: translateY(5px);
-  box-shadow: 0px 0px 0px 0px #a29bfe;
+    box-shadow: 0px 0px 0px 0px #a29bfe;
 }
