@@ -69,14 +69,14 @@ document.addEventListener("DOMContentLoaded", () => {
     quizHeading.textContent = selectedCategory;
     quizHeading.style.color='black';
     categoryId = category[selectedCategory];
-    console.log(categoryId) ;
+    // console.log(categoryId) ;
 
     loadQues() ;
     eventListeners() ;
 
     document.querySelectorAll('.btn').forEach(btn => {
         btn.addEventListener('click', () => { 
-            console.log("Button Clicked!!") ;
+            // console.log("Button Clicked!!") ;
             btn.classList.add('btn--translate--animation');
             // Remove the translate--animation class when the animation ends
             btn.addEventListener('animationend', () => {
@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let circularProgress = document.querySelector(".circular-progress"),
         progressValue = document.querySelector(".progress-value");
         progressValue.textContent = '0%';
-        circularProgress.style.background = `conic-gradient(#5ed696 0deg, #ededed 0deg)`;
+        circularProgress.style.background = `conic-gradient(#5ed696 3.6deg, #ededed 0deg)`;
 
         // Hide result container
         resultContainer.style.display = 'none';
@@ -185,7 +185,7 @@ function showQuestion(data){
     // nextBtn.disabled = false ;
     let currQues = questions[quesIndex] ;
     correctAnswer = currQues.correct_answer ;
-    console.log(`Second : ${correctAnswer}`) ;
+    console.log(`Correct Answer : ${correctAnswer}`) ;
 
 
     let incorrectAnswer = currQues.incorrect_answers ;
@@ -254,7 +254,7 @@ function loadNextQuestion(){
             progressStartValue * 3.6
             }deg, #ededed 0deg)`;
             if (progressStartValue == progressEndValue) {
-            clearInterval(progress);
+                clearInterval(progress);
             }
         }, speed);
     }
@@ -295,9 +295,10 @@ function selectOption(){
 
 
 function checkAnswer(){
-    nextBtn.disabled = true ;
+    // nextBtn.disabled = true ;
     if(options.querySelector('.display--block')){
         let selectedAnswer = options.querySelector('.display--block').parentElement.querySelector('.head').textContent;
+        // console.log(`Selected element : ${selectedAnswer}`);
         if(selectedAnswer.trim() == HTMLDecode(correctAnswer)){
             correctScore++ ;
             console.log("Correct!!") ;

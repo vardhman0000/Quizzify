@@ -44,11 +44,12 @@
                         <div class="options-holder">
                             
                             <ul class="options">
-                                <!-- <li class="opt1">
+                                <!-- <li class="opt${index+1}">
                                     <div class="retro-card">
-                                        <p class="head">
-                                            OPTION HERE!!
-                                        </p>
+                                        <div class="selected">
+                                            <i class="fa-solid fa-circle-check" style="color: #21c46d;"></i>
+                                        </div>
+                                        <p class="head">${option}</p>
                                     </div>
                                 </li> -->
                             </ul>
@@ -70,7 +71,7 @@
             <div class="progress-wrapper">
                 <div class="progress-page" id="resultCard">
                     <div class="progress-head">
-                        <h1>Your got <span class="correct-ans">0</span> / <span class="total-questions">10</span> Correct !!</h1>
+                        <h1>You got <span class="correct-ans">0</span> / <span class="total-questions">10</span> Correct !</h1>
                     </div>
                     <div class="progress-part">
                         <div class="progress-circle-wrapper">
@@ -78,10 +79,6 @@
                                 <span class="progress-value">0%</span>
                             </div>
                         </div>
-                        <!-- <div class="progress-circle-wrapper">
-                            <div class="progress-circle">80</div>
-                            <div class="progress-bar"></div>
-                        </div> -->
                         <div class="legend">
                             <div class="correct">
                                 <p>Correct Answers : <span class="correct-count"></span></p>
@@ -92,18 +89,6 @@
                             <div class="incorrect">
                                 <p>Incorrect Answers : <span class="incorrect-count"></span></p>
                             </div>
-                            <!-- <div class="correct">
-                                <div class="legend-box"></div>
-                                <p>Correct Answers : <span></span></p>
-                            </div>
-                            <div class="skipped">
-                                <div class="legend-box"></div>
-                                <p>Skipped Questions : <span></span></p>
-                            </div>
-                            <div class="incorrect">
-                                <div class="legend-box"></div>
-                                <p>Incorrect Answers : <span></span></p>
-                            </div> -->
                         </div>
                     </div>
                     <div class="progress-lower">

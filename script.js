@@ -7,6 +7,40 @@ document.addEventListener('DOMContentLoaded', () => {
     wrapper.style.display = 'block';
     triggerAnimations();
   }, 1500);
+
+
+  var swiper = new Swiper(".mySwiper", {
+    spaceBetween: 10,
+    slidesPerView: 3, 
+    // centeredSlides: true,
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    loop: true,
+    breakpoints: {
+      400: {
+        slidesPerView: 1,
+        spaceBetween: 20,
+      },
+      700: {
+        slidesPerView: 2,
+        spaceBetween: 40, 
+      },
+      1000: {
+        slidesPerView: 3,
+        spaceBetween: 60,
+      }
+    }
+  });
 });
 
 
@@ -22,54 +56,7 @@ categoryCards.forEach(card => {
 });
 
 
-// var swiper = new Swiper(".mySwiper", {
-//   spaceBetween: 50,
-//   slidesPerView: 3,
-//   centeredSlides: true,
-//   autoplay: {
-//     delay: 2500,
-//     disableOnInteraction: false,
-//   },
-//   pagination: {
-//     el: ".swiper-pagination",
-//     clickable: true,
-//   },
-//   navigation: {
-//     nextEl: ".swiper-button-next",
-//     prevEl: ".swiper-button-prev",
-//   },
-//   loop: true,
-// });
-var swiper = new Swiper(".mySwiper", {
-  spaceBetween: 50,  
-  centeredSlides: true,
-  autoplay: {
-    delay: 2500,
-    disableOnInteraction: false,
-  },
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-  },
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
-  loop: true,
 
-  // Responsive Breakpoints
-  breakpoints: {
-    0: {
-      slidesPerView: 1 
-    },
-    768: {
-      slidesPerView: 2 
-    },
-    992: {
-      slidesPerView: 3
-    }
-  }
-});
 
 
 //***** To adjust Slides per view to 2 ***** */
@@ -268,6 +255,7 @@ function triggerAnimations()
     opacity: 0,
     scale: 0,
   });
+  let overlayCardCont = document.querySelector('.overlay-card-container');
   retroCard.forEach((card, index) => {
     gsap.to(card, {
       y: -40,
@@ -276,25 +264,10 @@ function triggerAnimations()
       scale: 1,
       delay: index * 0.1,
       scrollTrigger: {
-        trigger: card,
+        trigger: overlayCardCont,
       },
     });
   });
-
-  //  const testimonial = document.querySelector(".testimonial");
-  //  const swiperTrigger = document.querySelector('.swiper') ;
-  //  const forTrigger = document.querySelector('.forAnimTrigger') ;
-  //  gsap.set(testimonial, {
-  //    opacity: 0,
-  //  });
-  //  gsap.to(testimonial, {
-  //     y : -90,
-  //     duration : 2,
-  //     opacity : 1,
-  //     scrollTrigger : {
-  //       trigger : forTrigger
-  //     }
-  //  });
 
 
 
@@ -335,4 +308,3 @@ function triggerAnimations()
   });
   
 };
-// );
