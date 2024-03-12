@@ -236,7 +236,7 @@ function calculateAnimationParams(screenWidth) {
   if (screenWidth <= 450) {
     animationParams.x = 0; // Reset x-axis movement
     animationParams.y = -90; // Move image upwards
-    animationParams.scrub = 1; // Faster scrubbing
+    animationParams.scrub = 2; // Faster scrubbing
   } else if (screenWidth <= 600) {
     animationParams.x = 40;
     animationParams.scrub = 1.5;
@@ -348,7 +348,7 @@ window.addEventListener("resize", () => {
         trigger: section,
         start: "top 70%",
         end: "top 30%",
-        scrub: 1,
+        scrub: 3,
         toggleActions: "restart none none none",
         // markers: true // For debugging
       },

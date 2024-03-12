@@ -1318,10 +1318,13 @@ footer .lower {
     }
     
     .about-quizzify h1 {
-        margin: 50px 0px;
+        margin: 50px 0px 100px 0;
         width: 90%;
         font-size: 1.3rem;
         text-align: center;
+    }
+    .lower-body .cards-container {
+        padding-top: 0;
     }
     .overlay-card-container .retro-card {
         width: 75%;
