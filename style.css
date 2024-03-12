@@ -1267,7 +1267,7 @@ footer .lower {
         margin: 8rem 0 3rem 0;
     }
     .welcome-text-container img {
-        height: 80%;
+        height: 75vh;
     }
     .welcome-text-container h4 {
         font-weight: 600;
@@ -1335,6 +1335,9 @@ footer .lower {
         justify-content: center;
         align-items: center;
         gap: 2rem;
+    }
+    .main-section .section-divider .part-two .contact-us{
+        width: 70%;
     }
 
 }
