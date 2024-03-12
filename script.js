@@ -27,9 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     loop: true,
     breakpoints: {
-      400: {
+      300: {
         slidesPerView: 1,
-        spaceBetween: 20,
+        spaceBetween: 10,
       },
       700: {
         slidesPerView: 2,
@@ -55,7 +55,12 @@ categoryCards.forEach(card => {
     });
 });
 
-
+let menuCard = document.querySelector('.menu-card .nav-items');
+let menu = document.querySelector('svg');
+menu.addEventListener('click', (event) => { 
+  event.stopPropagation();
+  menuCard.classList.toggle('display--block');
+ });
 
 
 
