@@ -125,7 +125,7 @@ function calculateAnimationParams(screenWidth) {
   };
 
   // Adjust parameters based on screen width
-  if (screenWidth <= 400) {
+  if (screenWidth <= 450) {
     animationParams.x = 40;
   } 
   else if (screenWidth <= 600) {
