@@ -109,117 +109,125 @@ window.addEventListener("scroll", () => {
 function triggerAnimations()
 {
   const secImg1 = document.querySelector(".sec1-img");
-  const secImg2 = document.querySelector(".sec2-img");
-  const secImg3 = document.querySelector(".sec3-img");
+const secImg2 = document.querySelector(".sec2-img");
+const secImg3 = document.querySelector(".sec3-img");
+const secText1 = document.querySelector(".sec1-text");
+const secText2 = document.querySelector(".sec2-text");
+const secText3 = document.querySelector(".sec3-text");
 
-  gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger);
 
-  // Animation for image in section 1 (moving in the positive x-axis direction)
-  gsap.to(secImg1, {
-    x: 90,
-    duration: 2,
-    scrollTrigger: {
-      trigger: secImg1,
-      start: "top 60%",
-      end: "top 20%",
-      scrub: 2,
-      toggleActions: "restart none none none",
-      // markers: {
-      //     startColor: 'white',
-      //     endColor: 'white',
-      //     fontSize: '1rem'
-      // }
-    },
-  });
+// Function to calculate animation parameters based on screen width
+function calculateAnimationParams(screenWidth) {
+  let animationParams = {
+    x: 90, // Default value
+    scrub: 2, // Default value
+  };
 
-  // Animation for image in section 2 (moving in the negative x-axis direction)
-  gsap.to(secImg2, {
-    x: -90,
-    duration: 2,
-    scrollTrigger: {
-      trigger: secImg2,
-      start: "top 60%",
-      end: "top 20%",
-      scrub: 2,
-      toggleActions: "restart none none none",
-      // markers: {
-      //     startColor: 'white',
-      //     endColor: 'white',
-      //     fontSize: '1rem'
-      // }
-    },
-  });
+  // Adjust parameters based on screen width
+  if (screenWidth <= 400) {
+    animationParams.x = 40;
+  } 
+  else if (screenWidth <= 600) {
+    animationParams.x = 40;
+    animationParams.scrub = 1.5;
+  } 
+  else if (screenWidth <= 750) {
+    animationParams.x = 60;
+    animationParams.scrub = 1;
+  }
 
-  // Animation for image in section 3 (moving in the positive x-axis direction)
-  gsap.to(secImg3, {
-    x: 90,
-    duration: 2,
-    scrollTrigger: {
-      trigger: secImg3,
-      start: "top 60%",
-      end: "top 20%",
-      scrub: 2,
-      toggleActions: "restart none none none",
-      // markers: {
-      //     startColor: 'white',
-      //     endColor: 'white',
-      //     fontSize: '1rem'
-      // }
-    },
-  });
+  return animationParams;
+}
 
-  const secText1 = document.querySelector(".sec1-text");
-  const secText2 = document.querySelector(".sec2-text");
-  const secText3 = document.querySelector(".sec3-text");
+// Animation for image in section 1
+gsap.to(secImg1, {
+  duration: 2,
+  scrollTrigger: {
+    trigger: secImg1,
+    start: "top 60%",
+    end: "top 20%",
+    toggleActions: "restart none none none",
+  },
+  ...calculateAnimationParams(window.innerWidth),
+});
 
-  gsap.to(secText1, {
-    x: -90,
-    duration: 2,
-    scrollTrigger: {
-      trigger: secText1,
-      start: "top 60%",
-      end: "top 20%",
-      scrub: 1,
-      toggleActions: "restart none none none",
-      // markers: {
-      //   startColor: "white",
-      //   endColor: "white",
-      //   fontSize: "1rem",
-      // },
-    },
-  });
-  gsap.to(secText2, {
-    x: 90,
-    duration: 2,
-    scrollTrigger: {
-      trigger: secText2,
-      start: "top 60%",
-      end: "top 20%",
-      scrub: 1,
-      toggleActions: "restart none none none",
-      // markers: {
-      //   startColor: "white",
-      //   endColor: "white",
-      //   fontSize: "1rem",
-      // },
-    },
-  });
-  gsap.to(secText3, {
-    x: -90,
-    duration: 2,
-    scrollTrigger: {
-      trigger: secText3,
-      start: "top 60%",
-      end: "top 20%",
-      scrub: 1,
-      toggleActions: "restart none none none",
-      // markers: {
-      //   startColor: "white",
-      //   endColor: "white",
-      //   fontSize: "1rem",
-      // },
-    },
-  });
+// Animation for image in section 2
+gsap.to(secImg2, {
+  duration: 2,
+  scrollTrigger: {
+    trigger: secImg2,
+    start: "top 60%",
+    end: "top 20%",
+    toggleActions: "restart none none none",
+  },
+  ...calculateAnimationParams(window.innerWidth),
+});
+
+// Animation for image in section 3
+gsap.to(secImg3, {
+  duration: 2,
+  scrollTrigger: {
+    trigger: secImg3,
+    start: "top 60%",
+    end: "top 20%",
+    toggleActions: "restart none none none",
+  },
+  ...calculateAnimationParams(window.innerWidth),
+});
+
+// Animation for text in section 1
+gsap.to(secText1, {
+  duration: 2,
+  scrollTrigger: {
+    trigger: secText1,
+    start: "top 60%",
+    end: "top 20%",
+    toggleActions: "restart none none none",
+  },
+  ...calculateAnimationParams(window.innerWidth),
+});
+
+// Animation for text in section 2
+gsap.to(secText2, {
+  duration: 2,
+  scrollTrigger: {
+    trigger: secText2,
+    start: "top 60%",
+    end: "top 20%",
+    toggleActions: "restart none none none",
+  },
+  ...calculateAnimationParams(window.innerWidth),
+});
+
+// Animation for text in section 3
+gsap.to(secText3, {
+  duration: 2,
+  scrollTrigger: {
+    trigger: secText3,
+    start: "top 60%",
+    end: "top 20%",
+    toggleActions: "restart none none none",
+  },
+  ...calculateAnimationParams(window.innerWidth),
+});
+
+// Event listener to handle window resize
+window.addEventListener("resize", () => {
+  // Recalculate animation parameters on window resize
+  const animationParams = calculateAnimationParams(window.innerWidth);
+
+  // Update animations with new parameters
+  gsap.to(secImg1, animationParams);
+  gsap.to(secImg2, animationParams);
+  gsap.to(secImg3, animationParams);
+  gsap.to(secText1, animationParams);
+  gsap.to(secText2, animationParams);
+  gsap.to(secText3, animationParams);
+});
+
+
+
 
   const sections = document.querySelectorAll("section");
   gsap.set(sections, { opacity: 0 });

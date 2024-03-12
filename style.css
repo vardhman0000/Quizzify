@@ -1232,13 +1232,16 @@ footer .lower {
         align-items: center;
         gap: 2rem;
     }
+    .main-section .section-divider .part-two .contact-us{
+        width: 70%;
+    }
 
 }
 @media  screen and (max-width : 400px) {
     #navbar {
         position: sticky;
-        height: 10vh;
         top: 0;
+        height: 10vh;
         justify-content: center;
         gap: 35vw;
         z-index: 20;
@@ -1338,6 +1341,42 @@ footer .lower {
     }
     .main-section .section-divider .part-two .contact-us{
         width: 70%;
+    }
+    
+
+    .lower-body .about-quizzify {
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        height: auto;
+    }
+    .about-quizzify :is(.sec1, .sec2, .sec3){
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+        justify-content: center;
+        width: 90vw;
+        margin: 30px 0;
+    }
+    .about-quizzify section p {
+        /* border: var(--border); */
+        width: 80vw;
+        text-align: justify;
+    }
+    .about-quizzify section img {
+        width: 85vw;
+        filter: drop-shadow(5px 5px 20px rgb(143, 144, 143));
+    }
+    .about-quizzify :is(.sec1-img, .sec2-img, .sec3-img) {
+        border: var(--border);
+    }
+    
+    .about-quizzify :is(.sec1-text, .sec2-text, .sec3-text) {
+        border: var(--border);
     }
 
 }
