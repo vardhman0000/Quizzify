@@ -118,21 +118,129 @@ const secText3 = document.querySelector(".sec3-text");
 gsap.registerPlugin(ScrollTrigger);
 
 // Function to calculate animation parameters based on screen width
+// function calculateAnimationParams(screenWidth) {
+//   let animationParams = {
+//     x: 90, // Default value
+//     scrub: 2, // Default value
+//   };
+
+//   // Adjust parameters based on screen width
+//   if (screenWidth <= 450) {
+//     animationParams.x = 20;
+//   } 
+//   else if (screenWidth <= 600) {
+//     animationParams.x = 40;
+//     animationParams.scrub = 1.5;
+//   } 
+//   else if (screenWidth <= 750) {
+//     animationParams.x = 60;
+//     animationParams.scrub = 1;
+//   }
+
+//   return animationParams;
+// }
+
+// // Animation for image in section 1
+// gsap.to(secImg1, {
+//   duration: 2,
+//   scrollTrigger: {
+//     trigger: secImg1,
+//     start: "top 60%",
+//     end: "top 20%",
+//     toggleActions: "restart none none none",
+//   },
+//   ...calculateAnimationParams(window.innerWidth),
+// });
+
+// // Animation for image in section 2
+// gsap.to(secImg2, {
+//   duration: 2,
+//   scrollTrigger: {
+//     trigger: secImg2,
+//     start: "top 60%",
+//     end: "top 20%",
+//     toggleActions: "restart none none none",
+//   },
+//   ...calculateAnimationParams(window.innerWidth),
+// });
+
+// // Animation for image in section 3
+// gsap.to(secImg3, {
+//   duration: 2,
+//   scrollTrigger: {
+//     trigger: secImg3,
+//     start: "top 60%",
+//     end: "top 20%",
+//     toggleActions: "restart none none none",
+//   },
+//   ...calculateAnimationParams(window.innerWidth),
+// });
+
+// // Animation for text in section 1
+// gsap.to(secText1, {
+//   duration: 2,
+//   scrollTrigger: {
+//     trigger: secText1,
+//     start: "top 60%",
+//     end: "top 20%",
+//     toggleActions: "restart none none none",
+//   },
+//   ...calculateAnimationParams(window.innerWidth),
+// });
+
+// // Animation for text in section 2
+// gsap.to(secText2, {
+//   duration: 2,
+//   scrollTrigger: {
+//     trigger: secText2,
+//     start: "top 60%",
+//     end: "top 20%",
+//     toggleActions: "restart none none none",
+//   },
+//   ...calculateAnimationParams(window.innerWidth),
+// });
+
+// // Animation for text in section 3
+// gsap.to(secText3, {
+//   duration: 2,
+//   scrollTrigger: {
+//     trigger: secText3,
+//     start: "top 60%",
+//     end: "top 20%",
+//     toggleActions: "restart none none none",
+//   },
+//   ...calculateAnimationParams(window.innerWidth),
+// });
+
+// // Event listener to handle window resize
+// window.addEventListener("resize", () => {
+//   // Recalculate animation parameters on window resize
+//   const animationParams = calculateAnimationParams(window.innerWidth);
+
+//   // Update animations with new parameters
+//   gsap.to(secImg1, animationParams);
+//   gsap.to(secImg2, animationParams);
+//   gsap.to(secImg3, animationParams);
+//   gsap.to(secText1, animationParams);
+//   gsap.to(secText2, animationParams);
+//   gsap.to(secText3, animationParams);
+// });
+
 function calculateAnimationParams(screenWidth) {
   let animationParams = {
-    x: 90, // Default value
-    scrub: 2, // Default value
+    x: 90, // Default value for x-axis movement
+    y: 0, // Default value for y-axis movement
+    scrub: 2, // Default value for scrubbing
   };
 
-  // Adjust parameters based on screen width
   if (screenWidth <= 450) {
-    animationParams.x = 40;
-  } 
-  else if (screenWidth <= 600) {
+    animationParams.x = 0; // Reset x-axis movement
+    animationParams.y = -90; // Move image upwards
+    animationParams.scrub = 1; // Faster scrubbing
+  } else if (screenWidth <= 600) {
     animationParams.x = 40;
     animationParams.scrub = 1.5;
-  } 
-  else if (screenWidth <= 750) {
+  } else if (screenWidth <= 750) {
     animationParams.x = 60;
     animationParams.scrub = 1;
   }
@@ -140,7 +248,6 @@ function calculateAnimationParams(screenWidth) {
   return animationParams;
 }
 
-// Animation for image in section 1
 gsap.to(secImg1, {
   duration: 2,
   scrollTrigger: {
@@ -225,6 +332,7 @@ window.addEventListener("resize", () => {
   gsap.to(secText2, animationParams);
   gsap.to(secText3, animationParams);
 });
+
 
 
 

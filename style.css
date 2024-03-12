@@ -1109,7 +1109,7 @@ footer .lower {
         font-size: 1.7rem;
     }
     .about-quizzify :is(.sec1, .sec2, .sec3){
-        border: var(--border);
+        /* border: var(--border); */
         display: flex;
         flex-direction: column;
         gap: 150px;
@@ -1372,11 +1372,13 @@ footer .lower {
         filter: drop-shadow(5px 5px 20px rgb(143, 144, 143));
     }
     .about-quizzify :is(.sec1-img, .sec2-img, .sec3-img) {
-        border: var(--border);
+        /* border: var(--border); */
+        margin: 0;
     }
     
     .about-quizzify :is(.sec1-text, .sec2-text, .sec3-text) {
-        border: var(--border);
+        /* border: var(--border); */
+        margin: 0;
     }
 
 }
