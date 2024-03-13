@@ -8,6 +8,7 @@ window.addEventListener('DOMContentLoaded', () => {
           setTimeout(() => {
               document.querySelector('.loader-body').style.display = 'none';
               document.querySelector('.container').style.display = 'block';
+              document.querySelector('.cross-x').style.display = 'block';
               triggerAnimaitons() ;
           }, 2000);
       });
@@ -24,6 +25,10 @@ sign_up_btn.addEventListener("click", () => {
 sign_in_btn.addEventListener("click", () => {
   container.classList.remove("sign-up-mode");
 });
+
+document.querySelector('.cross-x').addEventListener('click', () => { 
+  window.location.href='index.html';
+ })
 
 
 // Selecting Elements:

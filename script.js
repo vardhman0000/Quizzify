@@ -8,6 +8,16 @@ document.addEventListener('DOMContentLoaded', () => {
     triggerAnimations();
   }, 1500);
 
+  // let menu = document.querySelector('.burger'); 
+  // console.log(menu)
+  // let menuCard = document.querySelector('.menu-card'); 
+  // console.log(menuCard)
+
+  // menu.addEventListener('click', () => { 
+  //   menuCard.classList.toggle('display--flex');
+  // });
+
+
 
   var swiper = new Swiper(".mySwiper", {
     spaceBetween: 10,
@@ -40,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
         spaceBetween: 60,
       }
     }
-  });
+  });  
 });
 
 
@@ -54,14 +64,6 @@ categoryCards.forEach(card => {
         window.location.href = 'computer.html'; // Redirect to quiz page
     });
 });
-
-let menuCard = document.querySelector('.menu-card .nav-items');
-let menu = document.querySelector('svg');
-menu.addEventListener('click', (event) => { 
-  event.stopPropagation();
-  menuCard.classList.toggle('display--block');
- });
-
 
 
 //***** To adjust Slides per view to 2 ***** */
@@ -84,7 +86,7 @@ window.addEventListener("resize", function() {
 
 const navbar = document.querySelector("#navbar");
 window.addEventListener("scroll", () => {
-  if (window.scrollY > 70 && window.scrollY < 700) {
+  if (window.scrollY > 70 && window.scrollY < 750) {
     // navbar.style.backgroundColor = "black";
     navbar.style.backdropFilter = "blur(10px)";
     navbar.style.backgroundColor = "rgba(0, 0, 200, 0.5)";
@@ -94,7 +96,7 @@ window.addEventListener("scroll", () => {
     navbar.style.backgroundColor = "transparent";
     navbar.classList.remove("borderBottomShadow");
   }
-  if (window.scrollY > 700) {
+  if (window.scrollY > 750) {
     navbar.style.backgroundColor = "black";
   } else {
     navbar.style.backgroundColor = "transparent";
@@ -117,137 +119,155 @@ const secText3 = document.querySelector(".sec3-text");
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Function to calculate animation parameters based on screen width
-// function calculateAnimationParams(screenWidth) {
-//   let animationParams = {
-//     x: 90, // Default value
-//     scrub: 2, // Default value
-//   };
-
-//   // Adjust parameters based on screen width
-//   if (screenWidth <= 450) {
-//     animationParams.x = 20;
-//   } 
-//   else if (screenWidth <= 600) {
-//     animationParams.x = 40;
-//     animationParams.scrub = 1.5;
-//   } 
-//   else if (screenWidth <= 750) {
-//     animationParams.x = 60;
-//     animationParams.scrub = 1;
-//   }
-
-//   return animationParams;
-// }
-
-// // Animation for image in section 1
-// gsap.to(secImg1, {
-//   duration: 2,
-//   scrollTrigger: {
-//     trigger: secImg1,
-//     start: "top 60%",
-//     end: "top 20%",
-//     toggleActions: "restart none none none",
-//   },
-//   ...calculateAnimationParams(window.innerWidth),
-// });
-
-// // Animation for image in section 2
-// gsap.to(secImg2, {
-//   duration: 2,
-//   scrollTrigger: {
-//     trigger: secImg2,
-//     start: "top 60%",
-//     end: "top 20%",
-//     toggleActions: "restart none none none",
-//   },
-//   ...calculateAnimationParams(window.innerWidth),
-// });
-
-// // Animation for image in section 3
-// gsap.to(secImg3, {
-//   duration: 2,
-//   scrollTrigger: {
-//     trigger: secImg3,
-//     start: "top 60%",
-//     end: "top 20%",
-//     toggleActions: "restart none none none",
-//   },
-//   ...calculateAnimationParams(window.innerWidth),
-// });
-
-// // Animation for text in section 1
-// gsap.to(secText1, {
-//   duration: 2,
-//   scrollTrigger: {
-//     trigger: secText1,
-//     start: "top 60%",
-//     end: "top 20%",
-//     toggleActions: "restart none none none",
-//   },
-//   ...calculateAnimationParams(window.innerWidth),
-// });
-
-// // Animation for text in section 2
-// gsap.to(secText2, {
-//   duration: 2,
-//   scrollTrigger: {
-//     trigger: secText2,
-//     start: "top 60%",
-//     end: "top 20%",
-//     toggleActions: "restart none none none",
-//   },
-//   ...calculateAnimationParams(window.innerWidth),
-// });
-
-// // Animation for text in section 3
-// gsap.to(secText3, {
-//   duration: 2,
-//   scrollTrigger: {
-//     trigger: secText3,
-//     start: "top 60%",
-//     end: "top 20%",
-//     toggleActions: "restart none none none",
-//   },
-//   ...calculateAnimationParams(window.innerWidth),
-// });
-
-// // Event listener to handle window resize
-// window.addEventListener("resize", () => {
-//   // Recalculate animation parameters on window resize
-//   const animationParams = calculateAnimationParams(window.innerWidth);
-
-//   // Update animations with new parameters
-//   gsap.to(secImg1, animationParams);
-//   gsap.to(secImg2, animationParams);
-//   gsap.to(secImg3, animationParams);
-//   gsap.to(secText1, animationParams);
-//   gsap.to(secText2, animationParams);
-//   gsap.to(secText3, animationParams);
-// });
-
 function calculateAnimationParams(screenWidth) {
   let animationParams = {
-    x: 90, // Default value for x-axis movement
-    y: 0, // Default value for y-axis movement
-    scrub: 2, // Default value for scrubbing
+    x: 90,
+    y: 0,
+    scrub: 2,
   };
 
   if (screenWidth <= 450) {
-    animationParams.x = 0; // Reset x-axis movement
-    animationParams.y = -90; // Move image upwards
-    animationParams.scrub = 2; // Faster scrubbing
-  } else if (screenWidth <= 600) {
-    animationParams.x = 40;
-    animationParams.scrub = 1.5;
-  } else if (screenWidth <= 750) {
-    animationParams.x = 60;
-    animationParams.scrub = 1;
+    animationParams.x = 0; 
+    animationParams.y = -90; 
+    animationParams.scrub = 3;
+  }
+  else if (screenWidth <= 600) {
+    animationParams.x = 0; 
+    animationParams.y = -90;
+    animationParams.scrub = 3;
+  }
+  else if (screenWidth <= 750) {
+    animationParams.x = 0; 
+    animationParams.y = -90;
+    animationParams.scrub =3;
+  }
+  else if (screenWidth <= 950) {
+    animationParams.x = 0; 
+    animationParams.y = -90;
+    animationParams.scrub = 3;
+  }
+  else if (screenWidth > 950) {
+    triggerOriginalAnimation();
+    return ;
   }
 
   return animationParams;
 }
 
+function triggerOriginalAnimation(){
+  const secImg1 = document.querySelector(".sec1-img");
+  const secImg2 = document.querySelector(".sec2-img");
+  const secImg3 = document.querySelector(".sec3-img");
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Animation for image in section 1 (moving in the positive x-axis direction)
+  gsap.to(secImg1, {
+    x: 90,
+    duration: 2,
+    scrollTrigger: {
+      trigger: secImg1,
+      start: "top 60%",
+      end: "top 20%",
+      scrub: 2,
+      toggleActions: "restart none none none",
+      // markers: {
+      //     startColor: 'white',
+      //     endColor: 'white',
+      //     fontSize: '1rem'
+      // }
+    },
+  });
+
+  // Animation for image in section 2 (moving in the negative x-axis direction)
+  gsap.to(secImg2, {
+    x: -90,
+    duration: 2,
+    scrollTrigger: {
+      trigger: secImg2,
+      start: "top 60%",
+      end: "top 20%",
+      scrub: 2,
+      toggleActions: "restart none none none",
+      // markers: {
+      //     startColor: 'white',
+      //     endColor: 'white',
+      //     fontSize: '1rem'
+      // }
+    },
+  });
+
+  // Animation for image in section 3 (moving in the positive x-axis direction)
+  gsap.to(secImg3, {
+    x: 90,
+    duration: 2,
+    scrollTrigger: {
+      trigger: secImg3,
+      start: "top 60%",
+      end: "top 20%",
+      scrub: 2,
+      toggleActions: "restart none none none",
+      // markers: {
+      //     startColor: 'white',
+      //     endColor: 'white',
+      //     fontSize: '1rem'
+      // }
+    },
+  });
+
+  const secText1 = document.querySelector(".sec1-text");
+  const secText2 = document.querySelector(".sec2-text");
+  const secText3 = document.querySelector(".sec3-text");
+
+  gsap.to(secText1, {
+    x: -90,
+    duration: 2,
+    scrollTrigger: {
+      trigger: secText1,
+      start: "top 60%",
+      end: "top 20%",
+      scrub: 2,
+      toggleActions: "restart none none none",
+      // markers: {
+      //   startColor: "white",
+      //   endColor: "white",
+      //   fontSize: "1rem",
+      // },
+    },
+  });
+  gsap.to(secText2, {
+    x: 90,
+    duration: 2,
+    scrollTrigger: {
+      trigger: secText2,
+      start: "top 60%",
+      end: "top 20%",
+      scrub: 2,
+      toggleActions: "restart none none none",
+      // markers: {
+      //   startColor: "white",
+      //   endColor: "white",
+      //   fontSize: "1rem",
+      // },
+    },
+  });
+  gsap.to(secText3, {
+    x: -90,
+    duration: 2,
+    scrollTrigger: {
+      trigger: secText3,
+      start: "top 60%",
+      end: "top 20%",
+      scrub: 2,
+      toggleActions: "restart none none none",
+      // markers: {
+      //   startColor: "white",
+      //   endColor: "white",
+      //   fontSize: "1rem",
+      // },
+    },
+  });
+}
 gsap.to(secImg1, {
   duration: 2,
   scrollTrigger: {
@@ -368,6 +388,15 @@ window.addEventListener("resize", () => {
           offsetY: 70,
         },
       });
+    });
+  });
+  document.querySelector(".explore-more").addEventListener("click", () => {
+    gsap.to(window, {
+      duration: 1.5,
+      scrollTo: {
+        y: "#abt-quiz",
+        offsetY: -70,
+      },
     });
   });
 

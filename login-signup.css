@@ -18,6 +18,114 @@ body,
 input {
   font-family: "Poppins", sans-serif;
 }
+.cross-x {
+  position: absolute;
+  top: 1.5vh;
+  right: 1.5vh;
+  z-index: 1;
+  display: none;
+  align-items: center;
+  background-color: white;
+  border-radius: 30px;
+  padding: 0.2rem 0.2rem 0.2rem 0.3rem;
+  padding: 0.2rem;
+  box-shadow: 2px 2px 8px rgba(101, 101, 101, 0.400),
+      -2px -2px 8px rgba(101, 101, 101, 0.250);
+}
+
+.cross-x p {
+  font-size: 1.1rem;
+  font-weight: bold;
+  width: 0;
+  overflow: hidden;
+  transition: width 0.2s ease-in;
+}
+
+.cross-x:hover p {
+  margin: 0 0.7rem;
+  width: 35px;
+}
+
+
+.cross-x .cross-button {
+  position: relative;
+  width: 3em;
+  height: 3em;
+  border: none;
+  background: rgba(180, 83, 107, 0.11);
+  border-radius: 50%;
+  transition: background 0.5s;
+}
+
+.cross-button .X {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2em;
+  height: 2.5px;
+  background-color: rgb(0, 0, 0);
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.cross-button .Y {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2em;
+  height: 2.5px;
+  background-color: #000000;
+  transform: translateX(-50%) rotate(-45deg);
+}
+
+.cross-button .close {
+  position: absolute;
+  display: flex;
+  padding: 0.8rem 1.5rem;
+  margin-top: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  transform: translateX(-50%);
+  top: 100%;
+  /* Adjusted to position below the button */
+  left: 50%;
+  width: 5em;
+  height: 1.7em;
+  font-size: 12px;
+  background-color: rgb(19, 22, 24);
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 3px;
+  opacity: 0;
+  white-space: nowrap;
+}
+
+.cross-x .cross-button:hover .X,
+.cross-x .cross-button:hover .Y {
+  background-color: #ffffff;
+  /* Change color to white on hover */
+}
+
+
+.cross-x .cross-button:hover {
+  background-color: rgb(211, 21, 21);
+}
+
+.cross-x .cross-button:active {
+  background-color: rgb(130, 0, 0);
+}
+
+.cross-x .cross-button:hover>.close {
+  animation: close 0.2s forwards 0.25s;
+}
+
+@keyframes close {
+  100% {
+      opacity: 1;
+  }
+}
+
 
 /* Sets up the main container for the form,
 ensuring it covers the entire viewport and hides overflow. */

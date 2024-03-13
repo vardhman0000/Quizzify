@@ -38,7 +38,7 @@
 
   <div class="wrapper">
 
-    <div id="navbar" id="section1">
+    <div id="navbar" id="section1" class="test open">
       <div class="logo">
         <img src="logo.png" alt="LOGO">
       </div>
@@ -67,43 +67,44 @@
           <a href="login-signup.html">Login</a>
         </button>
       </div>
-      <label class="hamburger">
-        <input type="checkbox">
-        <svg viewBox="0 0 32 32">
-          <path class="line line-top-bottom"
-            d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22">
-          </path>
-          <path class="line" d="M7 16 27 16"></path>
-        </svg>
-      </label>
-    </div>
-    <div class="menu-card">
-      <div class="nav-items">
-        <ul>
-          <li>
-            <div class="text">
-              Home
-            </div>
-          </li>
-          <li>
-            <div class="text">
-              Quiz
-            </div>
-          </li>
-          <li>
-            <div class="text">
-              About Us
-            </div>
-          </li>
-        </ul>
+      <div class="menu-icon">
+        <i class="fas fa-bars"></i>
       </div>
+      
+      <div class="menu-card">
+        <div class="dropdown-list ">
+          <ul>
+            <li>
+              <div class="text">
+                Home
+              </div>
+            </li>
+            <li>
+              <div class="text">
+                Quiz
+              </div>
+            </li>
+            <li>
+              <div class="text">
+                About Us
+              </div>
+            </li>
+            <li>
+              <button class="login">
+                <a href="login-signup.html">Login</a>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
     </div>
 
 
     <div class="welcome-text-container">
       <img src="bgprop2.jpeg" alt="">
       <h4 class="welcome-text-heading">
-        Wanna test your Knowldege ?
+        Wanna test your <span class="role"></span>
       </h4>
       <h3 class="welcome-text-heading">
         Welcome to QUIZZIFY
@@ -111,7 +112,7 @@
       <p>
         Get ready to challenge your knowledge, have fun, and discover new facts with our exciting range of quizzes.
       </p>
-      <button>Explore More!</button>
+      <button class="explore-more">Explore More!</button>
     </div>
     <div class="lower-body">
       <h2>Companies we've worked with</h2>
@@ -131,7 +132,7 @@
           </div>
         </div>
       </div>
-      <div class="about-quizzify">
+      <div class="about-quizzify" id="abt-quiz">
         <!-- <img class="prop" src="c-prop.avif" alt=""> -->
         <h1>
           A Trivia Cloud Platform for The Digital World!
@@ -542,6 +543,33 @@
 
   <!-- scrollTo CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+
+  <!-- Typed JS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script src="https://kit.fontawesome.com/58a810656e.js" crossorigin="anonymous"></script>
+  <script>
+    var typeData = new Typed(".role", {
+    strings: [
+      "Skills ?",
+      "Knowledge ?",
+      "Level ?",
+    ],
+    loop: true,
+    typeSpeed: 100,
+    backSpeed: 80,
+    backDelay: 1000,
+  });
+  document.querySelector(".explore-more").addEventListener("click", () => {
+    gsap.to(window, {
+      duration: 1.5,
+      scrollTo: {
+        y: "#abt-quiz",
+        offsetY: 70,
+      },
+    });
+  });
+  </script>
+
 </body>
 
 </html>
