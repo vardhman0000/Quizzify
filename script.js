@@ -8,14 +8,25 @@ document.addEventListener('DOMContentLoaded', () => {
     triggerAnimations();
   }, 1500);
 
-  // let menu = document.querySelector('.burger'); 
-  // console.log(menu)
-  // let menuCard = document.querySelector('.menu-card'); 
-  // console.log(menuCard)
 
-  // menu.addEventListener('click', () => { 
-  //   menuCard.classList.toggle('display--flex');
-  // });
+  let dropdown = document.querySelector('#navbar .dropdown-list');
+  let burger = document.querySelector('.menu-icon');
+  let count = 0;
+
+  burger.addEventListener('click', () => {
+      if (window.innerWidth < 950) {
+          if (count % 2 == 0) {
+              dropdown.style.display = 'block';
+              count++;
+          } else {
+              dropdown.style.display = 'none';
+              count++;
+            }
+          }
+          else{
+            dropdown.style.display = 'none';
+          }
+  });
 
 
 
@@ -54,31 +65,27 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+
+
+
 const categoryCards = document.querySelectorAll(".retro-card");
-
-
 categoryCards.forEach(card => {
     card.addEventListener('click', function() {
         const category = card.dataset.category;
         localStorage.setItem('quizCategory', category);
-        window.location.href = 'computer.html'; // Redirect to quiz page
+        window.location.href = 'computer.html'; 
     });
 });
 
 
-//***** To adjust Slides per view to 2 ***** */
 
-// Add a listener for window resize
 window.addEventListener("resize", function() {
-  // Check if the window width is less than or equal to 700px
   if (window.innerWidth <= 720) {
-    // Update swiper instance with slidesPerView set to 2
     swiper.params.slidesPerView = 2;
-    swiper.update(); // Update swiper
+    swiper.update();
   } else {
-    // Update swiper instance with slidesPerView set back to 3
     swiper.params.slidesPerView = 3;
-    swiper.update(); // Update swiper
+    swiper.update();
   }
 });
 
@@ -103,11 +110,7 @@ window.addEventListener("scroll", () => {
   }
 });
 
-// ****************** GSAP ANIMATION ****************** //
 
-// gsap.registerPlugin(ScrollTrigger);
-
-// document.addEventListener("DOMContentLoaded", function () 
 function triggerAnimations()
 {
   const secImg1 = document.querySelector(".sec1-img");
@@ -161,7 +164,6 @@ function triggerOriginalAnimation(){
 
   gsap.registerPlugin(ScrollTrigger);
 
-  // Animation for image in section 1 (moving in the positive x-axis direction)
   gsap.to(secImg1, {
     x: 90,
     duration: 2,
@@ -179,7 +181,6 @@ function triggerOriginalAnimation(){
     },
   });
 
-  // Animation for image in section 2 (moving in the negative x-axis direction)
   gsap.to(secImg2, {
     x: -90,
     duration: 2,
@@ -197,7 +198,6 @@ function triggerOriginalAnimation(){
     },
   });
 
-  // Animation for image in section 3 (moving in the positive x-axis direction)
   gsap.to(secImg3, {
     x: 90,
     duration: 2,
@@ -279,7 +279,6 @@ gsap.to(secImg1, {
   ...calculateAnimationParams(window.innerWidth),
 });
 
-// Animation for image in section 2
 gsap.to(secImg2, {
   duration: 2,
   scrollTrigger: {
@@ -291,7 +290,6 @@ gsap.to(secImg2, {
   ...calculateAnimationParams(window.innerWidth),
 });
 
-// Animation for image in section 3
 gsap.to(secImg3, {
   duration: 2,
   scrollTrigger: {
@@ -303,7 +301,6 @@ gsap.to(secImg3, {
   ...calculateAnimationParams(window.innerWidth),
 });
 
-// Animation for text in section 1
 gsap.to(secText1, {
   duration: 2,
   scrollTrigger: {
@@ -315,7 +312,6 @@ gsap.to(secText1, {
   ...calculateAnimationParams(window.innerWidth),
 });
 
-// Animation for text in section 2
 gsap.to(secText2, {
   duration: 2,
   scrollTrigger: {
@@ -327,7 +323,6 @@ gsap.to(secText2, {
   ...calculateAnimationParams(window.innerWidth),
 });
 
-// Animation for text in section 3
 gsap.to(secText3, {
   duration: 2,
   scrollTrigger: {
@@ -339,12 +334,9 @@ gsap.to(secText3, {
   ...calculateAnimationParams(window.innerWidth),
 });
 
-// Event listener to handle window resize
 window.addEventListener("resize", () => {
-  // Recalculate animation parameters on window resize
   const animationParams = calculateAnimationParams(window.innerWidth);
 
-  // Update animations with new parameters
   gsap.to(secImg1, animationParams);
   gsap.to(secImg2, animationParams);
   gsap.to(secImg3, animationParams);
@@ -370,12 +362,10 @@ window.addEventListener("resize", () => {
         end: "top 30%",
         scrub: 3,
         toggleActions: "restart none none none",
-        // markers: true // For debugging
       },
     });
   });
 
-  // Scroll To Animation
 
   gsap.registerPlugin(ScrollToPlugin);
 
@@ -437,17 +427,17 @@ window.addEventListener("resize", () => {
     keyframes: [
       {
         y: -90,
-        opacity: 0, // Start position behind the screen
+        opacity: 0, 
         ease: "none",
       },
       {
         y: 0,
         opacity: 1,
         ease: "none",
-        time: 0.5, // 50% of the animation duration
+        time: 0.5,
       },
       {
-        y: -20, // Move testimonial back slightly
+        y: -20, 
         opacity: 1,
         ease: "none",
       },

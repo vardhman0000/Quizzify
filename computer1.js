@@ -48,11 +48,6 @@ let exitYesBtn = document.querySelector('.exit-yes');
 let exitNoBtn = document.querySelector('.exit-no');
 
 
-// let correctLegend = document.querySelector('.correct');
-// console.log(`Text : ${correctLegend.textContent}`);
-// let skippedLegend = document.querySelector('.skipped');
-// let incorrectLegend = document.querySelector('.incorrect');
-
 let correctAnswer = "", correctScore = askedCount = 0, totalQuestion = 10;
 let skippedCount = 0 ;
 let quesIndex = 0 ;
@@ -133,45 +128,6 @@ document.addEventListener("DOMContentLoaded", () => {
      exitNoBtn.addEventListener('click', () => { 
         exitConfirmContainer.style.display = 'none' ;
       });
-
-    // document.querySelector('.share-score').addEventListener('click', () => {
-    //     html2canvas(document.querySelector('#resultCard')).then(canvas => {
-    //         // Convert the canvas to a data URL 
-    //         const imageData = canvas.toDataURL('image/png');
-    
-    //         // Construct the WhatsApp Web sharing URL
-    //         const encodedImageData = encodeURIComponent(imageData); 
-    //         const shareURL = `https://web.whatsapp.com/send?text=Check%20out%20my%20Quiz%20Score!%20&attachment=${encodedImageData}`;
-    
-    //         // Open in a new tab/window
-    //         window.open(shareURL, '_blank'); 
-    //     });
-    // });
-    
-    document.querySelector('.share-score').addEventListener('click', () => {
-        html2canvas(document.querySelector('#resultCard')).then(canvas => {
-            const imageData = canvas.toDataURL('image/png');
-            const encodedImageData = encodeURIComponent(imageData); 
-    
-            // 1. Attempt to use the WhatsApp Web 'attachment' method (experimental)
-            const shareURL = `https://web.whatsapp.com/send?text=Check%20out%20my%20Quiz%20Score!%20&attachment=${encodedImageData}`;
-            window.open(shareURL, '_blank'); 
-    
-            // 2. Fallback: If image doesn't attach automatically, provide download option
-            setTimeout(() => {
-                if (!confirm('Did the image attach in WhatsApp Web?')) {
-                    const link = document.createElement('a');
-                    link.href = imageData;
-                    link.download = 'scorecard.png';
-                    link.click();
-                    alert("Image downloaded! Now open WhatsApp Web and attach the downloaded image."); 
-                }
-            }, 3000); // Adjust timeout as needed
-        });
-    });
-    
-    
-
 });
 
 async function loadQues(){
@@ -328,7 +284,7 @@ function triggerAnimaitons() {
     quiz1.classList.add("slide-in-from-up");
     nextBtn.classList.add("slide-in-from-up");
     skipBtn.classList.add("slide-in-from-up");
-    shareBtn.classList.add("slide-in-from-up");
+    // shareBtn.classList.add("slide-in-from-up");
     setTimeout(() => {
         quesImg.classList.add("slide-in-from-up-quesImg");
     }, 700);
