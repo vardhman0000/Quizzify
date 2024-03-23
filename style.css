@@ -323,9 +323,6 @@ body {
 }
 
 
-
-
-
 #navbar .menu-icon {
     position: relative;
     width: 40px;
@@ -391,15 +388,12 @@ body {
 
 /* ------------------- WELCOME TEXT ------------------- */
 .welcome-text-container {
-    /* border: white 2px solid; */
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
     color: var(--color5);
     font-family: var(--font);
-    /* padding: 80px 0; */
-    /* margin: 50px; */
     height: 88vh;
 }
 @keyframes slideIn {
@@ -680,7 +674,10 @@ body {
     font-size: 16px;
     padding: 0 30px 10px 30px;
     margin: 0px 5px 10px 5px;
-
+    /* width: 75%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; */
 }
 
 /* ------------------------------------------------- */
@@ -884,7 +881,6 @@ body {
 /* ****************** FOOTER ****************** */
 footer {
     /* border: var(--border); */
-    border-top: var(--border);
     /* background-color: rgb(46, 46, 47); */
     background-color: #fffce1;
     color: black;
@@ -1597,7 +1593,7 @@ footer .lower {
 }
 
 @media  screen and (max-width : 450px) {
-    #navbar {
+    .wrapper #navbar {
         position: sticky;
         top: 0;
         height: 10vh;
@@ -1707,6 +1703,12 @@ footer .lower {
     }
     .overlay-card-container .retro-card {
         width: 75%;
+    }
+    .overlay-card-container .retro-card .body {
+        width: 75%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
     .testimonial .swiper {
         width: 70vw;

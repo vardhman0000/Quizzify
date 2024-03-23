@@ -13,19 +13,18 @@ document.addEventListener('DOMContentLoaded', () => {
   let burger = document.querySelector('.menu-icon');
   let count = 0;
 
-  burger.addEventListener('click', () => {
-      if (window.innerWidth < 950) {
-          if (count % 2 == 0) {
-              dropdown.style.display = 'block';
-              count++;
-          } else {
-              dropdown.style.display = 'none';
-              count++;
-            }
-          }
-          else{
-            dropdown.style.display = 'none';
-          }
+  burger.addEventListener("click", () => {
+    if (window.innerWidth < 950) {
+      if (count % 2 == 0) {
+        dropdown.style.display = "block";
+        count++;
+      } else {
+        dropdown.style.display = "none";
+        count++;
+      }
+    } else {
+      dropdown.style.display = "none";
+    }
   });
 
 
@@ -370,6 +369,17 @@ window.addEventListener("resize", () => {
   gsap.registerPlugin(ScrollToPlugin);
 
   document.querySelectorAll(".text").forEach((btn, index) => {
+    btn.addEventListener("click", () => {
+      gsap.to(window, {
+        duration: 1.5,
+        scrollTo: {
+          y: "#section" + (index + 1),
+          offsetY: 70,
+        },
+      });
+    });
+  });
+  document.querySelectorAll(".dropdown-list .text").forEach((btn, index) => {
     btn.addEventListener("click", () => {
       gsap.to(window, {
         duration: 1.5,
